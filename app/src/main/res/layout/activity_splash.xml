@@ -7,6 +7,16 @@
     tools:context=".activities.ActivitySplash"
     android:background="@color/app_background">
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/splash_LBL_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic|bold"
+        android:text="@string/splash_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textSize="30sp"
+        />
     <ImageView
         android:id="@+id/splash_IMG_icon"
         android:layout_width="wrap_content"

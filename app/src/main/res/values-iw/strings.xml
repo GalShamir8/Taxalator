@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Taxalator</string>
     <string name="get_started">בואו נתחיל</string>
+    <string name="splash_title">ברוך הבא ל Taxlator</string>
 </resources>
