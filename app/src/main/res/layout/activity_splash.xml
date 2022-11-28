@@ -7,6 +7,13 @@
     tools:context=".activities.ActivitySplash"
     android:background="@color/app_background">
 
+    <ImageView
+        android:id="@+id/main_IMG_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/taxalator_icon"
+        android:layout_centerInParent="true"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
