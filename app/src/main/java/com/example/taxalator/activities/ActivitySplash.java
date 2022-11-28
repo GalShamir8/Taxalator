@@ -22,8 +22,8 @@ public class ActivitySplash extends AppCompatActivity {
         splash_BTN_getStarted.setOnClickListener(e -> openNewPage());
         ImageView splash_ING_ilus =  findViewById(R.id.splash_ING_ilus);
         splash_ING_ilus.setImageResource(R.drawable.app_ilustration);
-        ImageView main_IMG_icon =  findViewById(R.id.main_IMG_icon);
-        splash_ING_ilus.setImageResource(R.drawable.taxalator_icon);
+        ImageView splash_IMG_icon =  findViewById(R.id.splash_IMG_icon);
+        splash_IMG_icon.setImageResource(R.drawable.taxalator_icon);
     }
 
     private void openNewPage() {
