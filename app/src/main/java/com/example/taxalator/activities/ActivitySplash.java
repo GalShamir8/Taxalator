@@ -6,12 +6,14 @@ import android.os.Bundle;
 
 import android.widget.ImageView;
 
-
 import com.example.taxalator.R;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textview.MaterialTextView;
 
 public class ActivitySplash extends AppCompatActivity {
+    private MaterialButton splash_BTN_getStarted;
+    private ImageView splash_ING_ilus;
+    private ImageView splash_IMG_icon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,13 +22,20 @@ public class ActivitySplash extends AppCompatActivity {
     }
 
     private void initViews() {
-        MaterialButton splash_BTN_getStarted = findViewById(R.id.splash_BTN_getStarted);
-        splash_BTN_getStarted.setOnClickListener(e -> openNewPage());
-        ImageView splash_ING_ilus =  findViewById(R.id.splash_ING_ilus);
+        splash_BTN_getStarted = findViewById(R.id.splash_BTN_getStarted);
+        splash_ING_ilus =  findViewById(R.id.splash_ING_ilus);
+        splash_IMG_icon =  findViewById(R.id.splash_IMG_icon);
+        setListeners();
+        setResources();
+    }
+
+    private void setResources() {
         splash_ING_ilus.setImageResource(R.drawable.app_ilustration);
-        ImageView splash_IMG_icon =  findViewById(R.id.splash_IMG_icon);
         splash_IMG_icon.setImageResource(R.drawable.taxalator_icon);
-        MaterialTextView splash_LBL_title = findViewById(R.id.splash_LBL_title);
+    }
+
+    private void setListeners() {
+        splash_BTN_getStarted.setOnClickListener(e -> openNewPage());
     }
 
     private void openNewPage() {
