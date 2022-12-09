@@ -2,4 +2,8 @@
     <string name="app_name">Taxalator</string>
     <string name="get_started">Get Started</string>
     <string name="splash_title">Welcome to Taxlator</string>
+    <string name="base_salary">Base Salary</string>
+    <string name="credit_points">Credit Points</string>
+    <string name="pension">Pension</string>
+    <string name="percentage">%</string>
 </resources>

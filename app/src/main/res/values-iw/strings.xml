@@ -3,4 +3,8 @@
     <string name="app_name">Taxalator</string>
     <string name="get_started">בואו נתחיל</string>
     <string name="splash_title">ברוך הבא ל Taxlator</string>
+    <string name="base_salary">משכורת בסיס</string>
+    <string name="credit_points">נקודות זיכוי</string>
+    <string name="pension">פנסיה</string>
+    <string name="percentage">%</string>
 </resources>
