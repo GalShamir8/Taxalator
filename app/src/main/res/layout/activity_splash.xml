@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.ActivitySplash"
     android:background="@color/app_background">
+    <include layout="@layout/activity_app_bar"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/splash_LBL_title"
