@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.taxalator.R;
+import com.example.taxalator.fragments.FormFragment;
 
 public class BaseActivity extends AppCompatActivity {
 
