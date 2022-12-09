@@ -20,14 +20,15 @@
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/form_LBL_base_salary"
             app:layout_constraintTop_toTopOf="parent" />
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/form_LBL_base_salary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:text="@string/base_salary"
-            app:layout_constraintEnd_toEndOf="@+id/form_EDT_base_salary"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.157"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,15 +43,16 @@
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/form_LBL_credit_points"
             app:layout_constraintTop_toTopOf="parent" />
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/form_LBL_credit_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="152dp"
             android:text="@string/credit_points"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/form_EDT_credit_points"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.14"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,40 +66,42 @@
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/form_LBL_pension"
             app:layout_constraintTop_toTopOf="parent"
             />
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/form_LBL_pension"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="216dp"
             android:text="@string/pension"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/form_EDT_pension"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.167"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="40dp"
             android:layout_height="21dp"
-            android:layout_marginTop="224dp"
+            android:layout_marginTop="216dp"
             android:text="@string/percentage"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.652"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.321"
+            app:layout_constraintStart_toStartOf="@+id/form_EDT_pension"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/splash_BTN_calc"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginTop="288dp"
+            android:layout_marginTop="456dp"
             android:backgroundTint="@color/green_button"
             android:text="@string/calculate"
             app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintHorizontal_bias="0.455"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
