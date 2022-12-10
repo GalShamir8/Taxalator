@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+# igonre google service json file
+app/google-services.json
