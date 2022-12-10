@@ -45,6 +45,8 @@ public class FormFragment extends Fragment {
     private void setListeners() {
         splash_BTN_calc.setOnClickListener(e -> onFinish.call());
         form_EDT_base_salary.addTextChangedListener(new FormInputWatcher(form_EDT_base_salary));
+        form_EDT_pension.addTextChangedListener(new FormInputWatcher(form_EDT_pension));
+        form_EDT_credit_points.addTextChangedListener(new FormInputWatcher(form_EDT_credit_points));
     }
 
     @Override
