@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.taxalator.R;
 import com.example.taxalator.common.Callable;
+import com.example.taxalator.common.FormInputWatcher;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -42,13 +43,16 @@ public class FormFragment extends Fragment {
     }
 
     private void setListeners() {
+        splash_BTN_calc.setOnClickListener(e -> onFinish.call());
+        form_EDT_base_salary.addTextChangedListener(new FormInputWatcher(form_EDT_base_salary));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        initViews(getView());
-        return inflater.inflate(R.layout.fragment_form, container, false);
+        View view =  inflater.inflate(R.layout.fragment_form, container, false);
+        initViews(view);
+        return view;
     }
 
     public void setOnFinish(Callable onFinish) {
