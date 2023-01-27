@@ -7,6 +7,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class FormInputWatcher implements TextWatcher {
     private final TextInputEditText instance;
+    private InputEntries key;
     private Callable updateValidInput;
 
     public FormInputWatcher(TextInputEditText instance) {
@@ -15,6 +16,14 @@ public class FormInputWatcher implements TextWatcher {
 
     public TextInputEditText getInstance() {
         return instance;
+    }
+
+    public InputEntries getKey() {
+        return key;
+    }
+
+    public void setKey(InputEntries key) {
+        this.key = key;
     }
 
     public Callable getUpdateValidInput() {
