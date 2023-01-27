@@ -4,6 +4,7 @@ import static com.example.taxalator.common.InputEntries.BASE_SALARY;
 import static com.example.taxalator.common.InputEntries.CREDIT_POINTS;
 import static com.example.taxalator.common.InputEntries.PENSION;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -50,19 +51,46 @@ public class FormFragment extends Fragment {
         form_EDT_credit_points = view.findViewById(R.id.form_EDT_credit_points);
         form_EDT_base_salary = view.findViewById(R.id.form_EDT_base_salary);
         splash_BTN_calc = view.findViewById(R.id.splash_BTN_calc);
-        splash_BTN_calc.setEnabled(false);
+        setBTNMode(false);
+
         setListeners();
     }
 
+    private void setBTNMode(boolean mode) {
+        if (mode){
+            splash_BTN_calc.setEnabled(true);
+            splash_BTN_calc.setBackgroundColor(getContext().getColor(R.color.green_button));
+        } else {
+            splash_BTN_calc.setEnabled(false);
+            splash_BTN_calc.setBackgroundColor(Color.GRAY);
+        }
+    }
+
     private void setListeners() {
-        splash_BTN_calc.setOnClickListener(e -> onFinish.call());
+        splash_BTN_calc.setOnClickListener(e -> calculate());
         form_EDT_base_salary.addTextChangedListener(buildNewInputWatcher(BASE_SALARY));
         form_EDT_pension.addTextChangedListener(buildNewInputWatcher(PENSION));
         form_EDT_credit_points.addTextChangedListener(buildNewInputWatcher(CREDIT_POINTS));
     }
 
+    private void calculate() {
+        Map<InputEntries, Double> data = new HashMap<>();
+        onFinish.call(data);
+    }
+
     private TextWatcher buildNewInputWatcher(InputEntries key) {
-        FormInputWatcher watcher = new FormInputWatcher(form_EDT_base_salary);
+        FormInputWatcher watcher;
+        switch (key){
+            case PENSION:
+                watcher = new FormInputWatcher(form_EDT_pension);
+                break;
+            case CREDIT_POINTS:
+                watcher = new FormInputWatcher(form_EDT_credit_points);
+                break;
+            default:
+                watcher = new FormInputWatcher(form_EDT_base_salary);
+                break;
+        }
         watcher.setUpdateValidInput(this::updateInputValidity);
         watcher.setKey(key);
         return watcher;
@@ -70,8 +98,7 @@ public class FormFragment extends Fragment {
 
     private void updateInputValidity(Object[] params) {
         validityMap.put((InputEntries) params[0], (Boolean) params[1]);
-        if (validateMap())
-            splash_BTN_calc.setEnabled(true);
+        setBTNMode(validateMap());
     }
 
     private boolean validateMap() {
