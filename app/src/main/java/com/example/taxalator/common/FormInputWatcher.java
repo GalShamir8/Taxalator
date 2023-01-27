@@ -44,10 +44,10 @@ public class FormInputWatcher implements TextWatcher {
     public void afterTextChanged(Editable editable) {
         if (editable.length() < 1) {
             instance.setError("Can't be empty!");
-            updateValidInput.call(key, true);
+            updateValidInput.call(key, false);
         } else {
             instance.setError(null);
-            updateValidInput.call(key, false);
+            updateValidInput.call(key, true);
         }
 
     }
