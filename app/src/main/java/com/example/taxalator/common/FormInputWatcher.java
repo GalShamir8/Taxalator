@@ -7,9 +7,22 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class FormInputWatcher implements TextWatcher {
     private final TextInputEditText instance;
+    private Callable updateValidInput;
 
     public FormInputWatcher(TextInputEditText instance) {
         this.instance = instance;
+    }
+
+    public TextInputEditText getInstance() {
+        return instance;
+    }
+
+    public Callable getUpdateValidInput() {
+        return updateValidInput;
+    }
+
+    public void setUpdateValidInput(Callable updateValidInput) {
+        this.updateValidInput = updateValidInput;
     }
 
     @Override
@@ -25,4 +38,5 @@ public class FormInputWatcher implements TextWatcher {
         else
             instance.setError(null);
     }
+
 }
