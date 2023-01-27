@@ -39,6 +39,7 @@ public class FormFragment extends Fragment {
         form_EDT_credit_points = view.findViewById(R.id.form_EDT_credit_points);
         form_EDT_base_salary = view.findViewById(R.id.form_EDT_base_salary);
         splash_BTN_calc = view.findViewById(R.id.splash_BTN_calc);
+        splash_BTN_calc.setEnabled(false);
         setListeners();
     }
 
