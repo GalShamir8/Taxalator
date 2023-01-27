@@ -67,14 +67,17 @@ public class FormFragment extends Fragment {
     }
 
     private void setListeners() {
-        splash_BTN_calc.setOnClickListener(e -> calculate());
+        splash_BTN_calc.setOnClickListener(e -> sendDate());
         form_EDT_base_salary.addTextChangedListener(buildNewInputWatcher(BASE_SALARY));
         form_EDT_pension.addTextChangedListener(buildNewInputWatcher(PENSION));
         form_EDT_credit_points.addTextChangedListener(buildNewInputWatcher(CREDIT_POINTS));
     }
 
-    private void calculate() {
+    private void sendDate() {
         Map<InputEntries, Double> data = new HashMap<>();
+        data.put(BASE_SALARY, Double.parseDouble(form_EDT_base_salary.getText().toString()));
+        data.put(PENSION, Double.parseDouble(form_EDT_pension.getText().toString()));
+        data.put(CREDIT_POINTS, Double.parseDouble(form_EDT_credit_points.getText().toString()));
         onFinish.call(data);
     }
 
