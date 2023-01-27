@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.taxalator.R;
 import com.example.taxalator.fragments.FormFragment;
@@ -14,8 +15,11 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
+
 public class BaseActivity extends AppCompatActivity {
     private AdView adView;
+    private FormFragment formFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +47,15 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void openForm() {
-        FormFragment formFragment = new FormFragment();
-        formFragment.setOnFinish(e -> calculationSubmittedAction());
+        formFragment = new FormFragment();
+        formFragment.setOnFinish(this::calculationSubmittedAction);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.base_form, formFragment);
         transaction.commit();
     }
 
-    private void calculationSubmittedAction() {
+    private void calculationSubmittedAction(Object[] params) {
+        Log.d("ptt", "in calculate");
     }
 
 }
