@@ -25,7 +25,6 @@ import java.util.Map;
 
 public class BaseActivity extends AppCompatActivity {
     private AdView adView;
-    private MaterialTextView base_LBL_result;
     private FormFragment formFragment;
 
 
@@ -41,7 +40,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        base_LBL_result = findViewById(R.id.base_LBL_result);
         openForm();
         addAppAdds();
     }
@@ -104,7 +102,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void setCalculationResult(double result){
-        base_LBL_result.setText("" + result);
+        formFragment.setResult("" + result);
     }
 
 }

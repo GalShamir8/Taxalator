@@ -21,6 +21,7 @@ import com.example.taxalator.common.FormInputWatcher;
 import com.example.taxalator.common.InputEntries;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textview.MaterialTextView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,6 +32,7 @@ public class FormFragment extends Fragment {
     private TextInputEditText form_EDT_pension;
     private TextInputEditText form_EDT_credit_points;
     private TextInputEditText form_EDT_base_salary;
+    private MaterialTextView form_LBL_result;
     private MaterialButton splash_BTN_calc;
     private Callable onFinish;
     private Map<InputEntries, Boolean> validityMap;
@@ -50,6 +52,7 @@ public class FormFragment extends Fragment {
         form_EDT_pension = view.findViewById(R.id.form_EDT_pension);
         form_EDT_credit_points = view.findViewById(R.id.form_EDT_credit_points);
         form_EDT_base_salary = view.findViewById(R.id.form_EDT_base_salary);
+        form_LBL_result = view.findViewById(R.id.form_LBL_result);
         splash_BTN_calc = view.findViewById(R.id.splash_BTN_calc);
         setBTNMode(false);
 
@@ -131,5 +134,9 @@ public class FormFragment extends Fragment {
 
     public void setOnFinish(Callable onFinish) {
         this.onFinish = onFinish;
+    }
+
+    public void setResult(String res){
+        form_LBL_result.setText(res);
     }
 }
