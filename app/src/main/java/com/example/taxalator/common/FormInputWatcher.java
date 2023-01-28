@@ -3,12 +3,14 @@ package com.example.taxalator.common;
 import android.text.Editable;
 import android.text.TextWatcher;
 
+import com.example.taxalator.helpers.InputValidator;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class FormInputWatcher implements TextWatcher {
     private final TextInputEditText instance;
     private InputEntries key;
     private Callable updateValidInput;
+    private InputValidator validator;
 
     public FormInputWatcher(TextInputEditText instance) {
         this.instance = instance;
@@ -34,6 +36,10 @@ public class FormInputWatcher implements TextWatcher {
         this.updateValidInput = updateValidInput;
     }
 
+    public void setValidator(InputValidator validator) {
+        this.validator = validator;
+    }
+
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
@@ -45,11 +51,12 @@ public class FormInputWatcher implements TextWatcher {
         if (editable.length() < 1) {
             instance.setError("Can't be empty!");
             updateValidInput.call(key, false);
-        } else {
-            instance.setError(null);
-            updateValidInput.call(key, true);
+        } else if (validator.validate(Double.parseDouble(editable.toString()))) {
+                instance.setError(null);
+                updateValidInput.call(key, true);
+            } else {
+            instance.setError("Invalid input");
+            updateValidInput.call(key, false);
         }
-
     }
-
 }
