@@ -105,7 +105,7 @@ public class CalculationHelper {
     }
 
     private double calculateCreditPoints() {
-        return -(creditPoints * 235);
+        return -(creditPoints * 223);
     }
 
     private double calculatePension() {
