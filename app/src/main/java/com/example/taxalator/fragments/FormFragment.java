@@ -19,6 +19,9 @@ import com.example.taxalator.R;
 import com.example.taxalator.common.Callable;
 import com.example.taxalator.common.FormInputWatcher;
 import com.example.taxalator.common.InputEntries;
+import com.example.taxalator.helpers.BaseSalaryValidator;
+import com.example.taxalator.helpers.CreditPointsValidator;
+import com.example.taxalator.helpers.PensionValidator;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
@@ -89,12 +92,15 @@ public class FormFragment extends Fragment {
         switch (key){
             case PENSION:
                 watcher = new FormInputWatcher(form_EDT_pension);
+                watcher.setValidator(new PensionValidator());
                 break;
             case CREDIT_POINTS:
                 watcher = new FormInputWatcher(form_EDT_credit_points);
+                watcher.setValidator(new CreditPointsValidator());
                 break;
             default:
                 watcher = new FormInputWatcher(form_EDT_base_salary);
+                watcher.setValidator(new BaseSalaryValidator());
                 break;
         }
         watcher.setUpdateValidInput(this::updateInputValidity);
