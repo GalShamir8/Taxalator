@@ -18,7 +18,6 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Map;
 
@@ -42,48 +41,39 @@ public class BaseActivity extends AppCompatActivity {
     private void initView() {
         openForm();
         addAppAdds();
+        appBannerAd();
+        appFullscreenAd();
     }
-// banner
+
     private void addAppAdds() {
-        adView = new AdView(this);
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
             }
         });
+    }
 
+    private void appBannerAd() {
+        adView = new AdView(this);
         adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
     }
 
-// full screen
-//    private void addAppAdds() {
-//        adView = new AdView(this);
-//        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-//            @Override
-//            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
-//            }
-//        });
-//
-////        adView = findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest,
-//                new InterstitialAdLoadCallback() {
-//                    @Override
-//                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-//                        // The mInterstitialAd reference will be null until
-//                        // an ad is loaded.
-//                        mInterstitialAd = interstitialAd;
-//                    }
-//                    @Override
-//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-//                        // Handle the error
-//                        mInterstitialAd = null;
-//                    }
-//                });
-////        adView.loadAd(adRequest);
-//    }
+    private void appFullscreenAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        mInterstitialAd = interstitialAd;
+                    }
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        mInterstitialAd = null;
+                    }
+                });
+    }
 
     private void openForm() {
         formFragment = new FormFragment();
@@ -94,6 +84,9 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void calculationSubmittedAction(Object[] params) {
+        if (mInterstitialAd != null) {
+            mInterstitialAd.show(this);
+        }
         Map<InputEntries, Double> data = (Map<InputEntries, Double>) params[0];
         double baseSalary = data.get(InputEntries.BASE_SALARY);
         double pension = data.get(InputEntries.PENSION);
