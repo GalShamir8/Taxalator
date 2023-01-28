@@ -51,6 +51,7 @@ public class ActivitySplash extends AppCompatActivity {
     }
 
     private void settingsAction() {
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 
     private void openNewPage() {
