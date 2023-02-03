@@ -1,5 +1,8 @@
 package com.example.taxalator.activities;
 
+import static com.example.taxalator.common.Constants.NO_ADDS;
+import static com.example.taxalator.common.Constants.SUBSCRIBE;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.taxalator.R;
+import com.example.taxalator.common.SharedPreferenceHelper;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -30,11 +34,13 @@ public class ActivitySplash extends AppCompatActivity {
     private ImageView splash_IMG_icon;
     private ImageView bar_settings;
     private ImageView bar_back;
+    private SharedPreferenceHelper sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        sp = new SharedPreferenceHelper(this);
         initViews();
     }
 
@@ -88,10 +94,10 @@ public class ActivitySplash extends AppCompatActivity {
                         showTerms();
                         break;
                     case 2:
-                        // Do something for Subscribe
+                        subscribe();
                         break;
                     case 3:
-                        // Do something for Buy no ads option
+                        subscribeNoAds();
                         break;
                 }
             }
@@ -109,6 +115,14 @@ public class ActivitySplash extends AppCompatActivity {
                 })
                 .show();
 
+    }
+
+    private void subscribeNoAds() {
+        sp.getBooleanKey(NO_ADDS, true);
+    }
+
+    private void subscribe() {
+        sp.getBooleanKey(SUBSCRIBE, true);
     }
 
     private void showTerms() {
@@ -150,6 +164,11 @@ public class ActivitySplash extends AppCompatActivity {
 
 
     private void openNewPage() {
-        startActivity(new Intent(this, BaseActivity.class));
+        Intent baseActivity = new Intent(this, BaseActivity.class);
+        Bundle data = new Bundle();
+        boolean value = sp.getBooleanKey(NO_ADDS, false) || sp.getBooleanKey(SUBSCRIBE, false);
+        data.putBoolean(NO_ADDS, value);
+        baseActivity.putExtras(data);
+        startActivity(baseActivity);
     }
 }

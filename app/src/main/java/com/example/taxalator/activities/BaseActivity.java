@@ -1,5 +1,7 @@
 package com.example.taxalator.activities;
 
+import static com.example.taxalator.common.Constants.NO_ADDS;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,6 +27,7 @@ import java.util.Map;
 public class BaseActivity extends AppCompatActivity {
     private AdView adView;
     private FormFragment formFragment;
+    private Bundle data;
 
 
     // full screen
@@ -35,14 +38,17 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+        data = getIntent().getExtras();
         initView();
     }
 
     private void initView() {
         openForm();
         addAppAdds();
-        appBannerAd();
-        appFullscreenAd();
+        if (!data.getBoolean(NO_ADDS)) {
+            appBannerAd();
+            appFullscreenAd();
+        }
     }
 
     private void addAppAdds() {
